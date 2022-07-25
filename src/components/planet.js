@@ -4,7 +4,6 @@ import ApiService from '../services/api.service';
 
 export default function Planet() {
   let { planet } = useParams();
-  console.log(planet);
   const location = useLocation();
 
   let [residents, setResidents] = useState(<div></div>);
@@ -13,7 +12,6 @@ export default function Planet() {
 
 
   let planetInfo = location.state?.planet;
-  console.log(planetInfo);
   if (!planetInfo) {
     planetInfo = ApiService.GetPlanet(planet);
   }
@@ -28,8 +26,6 @@ export default function Planet() {
 
   useEffect(() => {
     ApiService.GetInhabitants(planetInfo).then(result => {
-      console.log('getinhabitants');
-      console.log(result);
       let res = result.map((resident) => {
         return (
           <div className='list-item' onClick={() => { navigate(resident.name, { state: { resident: resident } }) }} key={resident.name.toString()}>

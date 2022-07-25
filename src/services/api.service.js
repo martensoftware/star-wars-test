@@ -36,7 +36,6 @@ const ApiService = {
   },
 
   GetInhabitants: async (planet) => {
-    console.log(planet.residents);
     let inhabitants = [];
     for (let index = 0; index < planet.residents.length; index++) {
       const element = planet.residents[index];

@@ -4,7 +4,6 @@ import './resident.scss';
 export default function Resident() {
   const location = useLocation();
   let resident = location.state.resident;
-  console.log(resident);
 
   return (
     <div className='flex-row align-center'>

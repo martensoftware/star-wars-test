@@ -7,14 +7,8 @@ import { getPlanetsFromSession } from '../services/planets';
 class PlanetList extends React.Component {
   constructor(props) {
     super(props);
-    //this.planets = [];
     this.state = { planets: [], planet: null };
   }
-
-  // async getPlanets() {
-  //   this.planets = await ApiService.getPlanets();
-  //   console.log(this.planets);
-  // }
 
   navigateToPlanet(planet) {
 
@@ -28,10 +22,7 @@ class PlanetList extends React.Component {
       ps = await ApiService.GetPlanets();
     }
 
-    //let array = [...ps];
-    console.log(ps);
     this.setState({ planets: [...ps] }, () => {
-      console.log(this.state)
       this.listPlanets = this.state.planets.map((planet) => {
         return (
           <div onClick={() => this.navigateToPlanet(planet)} className='list-item' key={planet.name.toString()}>
@@ -45,17 +36,10 @@ class PlanetList extends React.Component {
     this.forceUpdate();
   }
 
-  // componentWillUnmount() {
-  //   this.setState({ planets: [], planet: null })
-  // }
-
   updateList(event) {
     let text = event.target.value
-    console.log(text);
     let matches = getPlanetsFromSession().filter(a => a.name.toLowerCase().includes(text));
-    console.log(matches);
     this.setState({ planets: [...matches] }, () => {
-      console.log(this.state);
 
       this.listPlanets = this.state.planets.map((planet) => {
         return (

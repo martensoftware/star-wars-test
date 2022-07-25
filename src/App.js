@@ -7,23 +7,14 @@ import { Outlet, Link } from 'react-router-dom';
 import { withRouter } from './services/with-router';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-
-    console.log(this.props.router.location);
-    //this.location = useLocation();
-  }
-
   getBreadcrumbs() {
     let path = this.props.router.location.pathname
     let crumbsArray = path.split("/");
     crumbsArray = crumbsArray.filter(o => o);
-    console.log(crumbsArray);
     let links = [(<div></div>)];
     for (let i = 0; i < crumbsArray.length; i++) {
       const element = crumbsArray[i];
       let urlPath = path.substring(0, (path.indexOf(element) + element.length));
-      console.log(urlPath);
       let decode = decodeURI(element)
       decode = decode.toUpperCase();
       let slash = ' /';
